@@ -9,4 +9,4 @@ RUN npm install -g @vue/cli
 WORKDIR /workspace
 
 # Setup: install bash, git, etc. (if needed)
-RUN apt-get update && apt-get install -y git bash
+# RUN apk update && apk add --no-cache git bash
