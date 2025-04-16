@@ -1,31 +1,58 @@
 <script setup>
 // Home page component
+import { onMounted } from 'vue';
+
+// Animation setup function
+const setupLogoAnimation = () => {
+  const logo = document.querySelector('.edge-cloud-logo');
+  if (!logo) return;
+  
+  // Add floating animation
+  const animate = () => {
+    logo.style.transform = `translateY(${Math.sin(Date.now() / 1000) * 10}px)`;
+    requestAnimationFrame(animate);
+  };
+  
+  animate();
+};
+
+// Initialize animations after component mount
+onMounted(() => {
+  setupLogoAnimation();
+});
 </script>
 
 <template>
   <div class="home-container">
-    <!-- Hero section -->
+    <!-- Enhanced Hero section with animated logo -->
     <div class="hero-section color-bg-subtle border-bottom">
       <div class="container-lg p-responsive py-5">
-        <div class="d-md-flex">
-          <div class="col-md-7 mb-4 mb-md-0">
-            <h1 class="h000-mktg">Build, Scale, Innovate</h1>
+        <div class="d-md-flex flex-items-center">
+          <div class="col-md-6 mb-4 mb-md-0 pr-md-4">
+            <h1 class="h000-mktg mb-3">Edge Forge Labs</h1>
             <h2 class="h3-mktg mb-3">
-              OpenSource Software House specializing in DevOps, Cloud Solutions, and Enterprise Software
+              Building the future of cloud-native infrastructure
             </h2>
             <p class="f3-mktg mb-4">
-              We build scalable software solutions and help organizations modernize their infrastructure through DevOps practices and cloud-native technologies.
+              We specialize in DevOps, Cloud Solutions, and Enterprise Software to help your business scale efficiently.
             </p>
-            <a href="#services" class="btn btn-large btn-primary mr-3">Our Services</a>
-            <a href="/blog" class="btn btn-large">Read our Blog</a>
-          </div>
-          <div class="col-md-5 text-center px-5">
-            <!-- Replace with your own illustration/image -->
-            <div class="home-illustration">
-              <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
-                <path d="M3.5 3.75a.25.25 0 01.25-.25h13.5a.25.25 0 01.25.25v10a.75.75 0 001.5 0v-10A1.75 1.75 0 0017.25 2H3.75A1.75 1.75 0 002 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 000-1.5h-7a.25.25 0 01-.25-.25V3.75z"></path><path d="M6.25 7a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm-.75 4.75a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75zm16.28 4.53a.75.75 0 10-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.06 0l5.5-5.5z"></path>
-              </svg>
+            <div class="d-flex flex-column flex-md-row">
+              <a href="#services" class="btn-primary btn-edge-cloud mr-md-3 mb-3 mb-md-0">Our Services</a>
+              <a href="/blog" class="btn-secondary btn-edge-cloud mr-md-3 mb-3 mb-md-0">Read our Blog</a>
             </div>
+          </div>
+          
+          <!-- Animated Logo Section -->
+          <div class="col-md-6 text-center px-md-5 logo-container">
+            <div class="logo-wrapper">
+              <img src="../assets/images/edge-cloud-logo.png" alt="Edge Cloud Logo" class="edge-cloud-logo" />
+              
+              <!-- Orbiting Elements -->
+              <div class="orbit-element orbit-1"></div>
+              <div class="orbit-element orbit-2"></div>
+              <div class="orbit-element orbit-3"></div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -35,13 +62,14 @@
     <div id="services" class="container-lg p-responsive py-6">
       <div class="text-center mb-6">
         <h2 class="h1-mktg mb-3">Our Services</h2>
-        <p class="f3-mktg col-md-8 mx-auto">Enabling organizations to focus on what they do best by managing their technology needs</p>
+<!--      <p class="f3-mktg col-md-8 mx-auto">Enabling organizations to focus on what they do best by managing their technology needs</p> -->  
       </div>
       
-      <div class="d-md-flex gutter-md mb-6">
+      <!-- Service cards with hover effects - Fixed layout using grid instead of flex -->
+      <div class="services-grid">
         <!-- DevOps -->
-        <div class="col-md-4 mb-5 mb-md-0">
-          <div class="Box height-full p-4">
+        <div class="service-card-wrapper">
+          <div class="Box height-full p-4 service-card">
             <div class="d-flex flex-items-center mb-2">
               <svg class="octicon mr-2 color-fg-accent" height="24" viewBox="0 0 24 24" version="1.1" width="24">
                 <path fill-rule="evenodd" d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z"></path>
@@ -53,8 +81,8 @@
         </div>
         
         <!-- Cloud Solutions -->
-        <div class="col-md-4 mb-5 mb-md-0">
-          <div class="Box height-full p-4">
+        <div class="service-card-wrapper">
+          <div class="Box height-full p-4 service-card">
             <div class="d-flex flex-items-center mb-2">
               <svg class="octicon mr-2 color-fg-accent" height="24" viewBox="0 0 24 24" version="1.1" width="24">
                 <path fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"></path>
@@ -67,8 +95,8 @@
         </div>
         
         <!-- Enterprise Software -->
-        <div class="col-md-4">
-          <div class="Box height-full p-4">
+        <div class="service-card-wrapper">
+          <div class="Box height-full p-4 service-card">
             <div class="d-flex flex-items-center mb-2">
               <svg class="octicon mr-2 color-fg-accent" height="24" viewBox="0 0 24 24" version="1.1" width="24">
                 <path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H5a2 2 0 01-2-2V3zm2-.5a.5.5 0 01.5-.5h9.982a.5.5 0 01.354.146l4.018 4.018a.5.5 0 01.146.354V21a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V3z"></path>
@@ -88,6 +116,7 @@
         <h2 class="h1-mktg text-center mb-5">Our Technology Stack</h2>
         
         <div class="d-flex flex-wrap flex-justify-center gutter">
+          <!-- Technology stack items -->
           <div class="tech-item text-center col-6 col-md-3 col-lg-2 mb-4">
             <div class="p-3">
               <svg height="48" viewBox="0 0 24 24">
@@ -97,6 +126,7 @@
             </div>
           </div>
           
+          <!-- More tech stack items... -->
           <div class="tech-item text-center col-6 col-md-3 col-lg-2 mb-4">
             <div class="p-3">
               <svg height="48" viewBox="0 0 24 24">
@@ -118,7 +148,7 @@
           <div class="tech-item text-center col-6 col-md-3 col-lg-2 mb-4">
             <div class="p-3">
               <svg height="48" viewBox="0 0 24 24">
-                <path fill="#00ADD8" d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.023.035.059l-.246.315c-.023.035-.081.058-.128.058h-4.172zM.047 11.306c-.047 0-.059-.023-.035-.059l.245-.315c.023-.035.082-.058.129-.058h5.328c.047 0 .07.023.058.058l-.093.315c-.012.047-.058.059-.105.059H.047zM3.472 9.155c-.047 0-.059-.023-.035-.058l.163-.292c.023-.035.07-.058.117-.058h2.337c.047 0 .07.023.07.058l-.012.292c0 .035-.035.058-.082.058h-2.558zM11.088 11.763c-.152.34-.375.51-.631.51-.274 0-.457-.158-.68-.446l-1.555-2.520c-.035-.07-.011-.118.082-.118h.67c.07 0 .105.023.128.082l.962 1.559c.047.07.082.047.106-.024l.626-1.559c.023-.058.058-.082.128-.082h.67c.094 0 .117.048.082.118l-1.578 2.52c-.012 0-.023-.01-.012-.04zM13.033 11.132v-.642a.111.111 0 01.035-.082 3.08 3.08 0 00.593-.642c.263-.35.408-.85.408-1.482 0-.867-.339-1.482-.867-1.865-.527-.385-1.206-.642-2.038-.665-.14 0-.187-.047-.187-.152V5.45c0-.082.058-.14.14-.152.035 0 .81.025 1.409.222.76.21 1.409.7 1.88 1.318.479.618.747 1.482.747 2.41 0 .899-.222 1.647-.645 2.252-.42.596-.99.996-1.618 1.204-.198.058-.502.105-.794.14-.083 0-.14-.058-.14-.14v-.631c0-.082.046-.14.128-.14.292-.024.525-.07.735-.175.467-.21.7-.573.7-1.321 0-.152-.012-.293-.035-.445a.85.85 0 00-.128-.338c-.058-.07-.058-.094.023-.14.502-.293.759-.818.759-1.436 0-.787-.315-1.318-.993-1.553-.164-.059-.41-.14-.77-.14-.586 0-1.054.21-1.377.642-.322.408-.503.949-.503 1.624 0 .922.293 1.67.83 2.146a.172.172 0 01.023.199c-.035.07-.07.094-.117.094h-.737a.125.125 0 01-.117-.07c-.14-.222-.222-.455-.292-.689a3.147 3.147 0 01-.129-.83 3.242 3.242 0 01.467-1.773c.339-.596.782-1.053 1.377-1.365a3.828 3.828 0 011.87-.455c.713 0 1.365.164 1.9.502.537.35.947.807 1.214 1.389.268.596.409 1.224.409 1.889 0 1.026-.339 1.889-1.02 2.564-.314.338-.713.596-1.158.784.515.2.923.502 1.226.899.339.42.502.946.502 1.576 0 .922-.315 1.623-.922 2.099-.619.479-1.389.7-2.286.7h-.07c-.36.023-.817-.094-1.353-.327-.44-.199-.806-.502-1.112-.9-.339-.42-.597-.9-.747-1.412a4.468 4.468 0 01-.129-1.026c0-.117.047-.176.117-.176h.729c.07 0 .117.035.128.105.094.665.245 1.156.468 1.459.362.525.783.784 1.318.784.455 0 .876-.176 1.224-.525.35-.338.504-.783.504-1.342 0-.643-.2-1.130-.597-1.436-.385-.338-.886-.525-1.506-.55-.14 0-.187-.07-.187-.176z"></path>
+                <path fill="#00ADD8" d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.023.035.059l-.246.315c-.023.035-.081.058-.128.058h-4.172zM.047 11.306c-.047 0-.059-.023-.035-.059l.245-.315c.023-.035.082-.058.129-.058h5.328c.047 0 .07.023.058.058l-.093.315c-.012.047-.058.059-.105.059H.047zM3.472 9.155c-.047 0-.059-.023-.035-.058l.163-.292c.023-.035.07-.058.117-.058h2.337c.047 0 .07.023.07.058l-.012.292c0 .035-.035.058-.082.058h-2.558zM11.088 11.763c-.152.34-.375.51-.631.51-.274 0-.457-.158-.68-.446l-1.555-2.52c-.035-.07-.011-.118.082-.118h.67c.07 0 .105.023.128.082l.962 1.559c.047.07.082.047.106-.024l.626-1.559c.023-.058.058-.082.128-.082h.67c.094 0 .117.048.082.118l-1.578 2.52c-.012 0-.023-.01-.012-.04zM13.033 11.132v-.642a.111.111 0 01.035-.082 3.08 3.08 0 00.593-.642c.263-.35.408-.85.408-1.482 0-.867-.339-1.482-.867-1.865-.527-.385-1.206-.642-2.038-.665-.14 0-.187-.047-.187-.152V5.45c0-.082.058-.14.14-.152.035 0 .81.025 1.409.222.76.21 1.409.7 1.88 1.318.479.618.747 1.482.747 2.41 0 .899-.222 1.647-.645 2.252-.42.596-.99.996-1.618 1.204-.198.058-.502.105-.794.14-.083 0-.14-.058-.14-.14v-.631c0-.082.046-.14.128-.14.292-.024.525-.07.735-.175.467-.21.7-.573.7-1.321 0-.152-.012-.293-.035-.445a.85.85 0 00-.128-.338c-.058-.07-.058-.094.023-.14.502-.293.759-.818.759-1.436 0-.787-.315-1.318-.993-1.553-.164-.059-.41-.14-.77-.14-.586 0-1.054.21-1.377.642-.322.408-.503.949-.503 1.624 0 .922.293 1.67.83 2.146a.172.172 0 01.023.199c-.035.07-.07.094-.117.094h-.737a.125.125 0 01-.117-.07c-.14-.222-.222-.455-.292-.689a3.147 3.147 0 01-.129-.83 3.242 3.242 0 01.467-1.773c.339-.596.782-1.053 1.377-1.365a3.828 3.828 0 011.87-.455c.713 0 1.365.164 1.9.502.537.35.947.807 1.214 1.389.268.596.409 1.224.409 1.889 0 1.026-.339 1.889-1.02 2.564-.314.338-.713.596-1.158.784.515.2.923.502 1.226.899.339.42.502.946.502 1.576 0 .922-.315 1.623-.922 2.099-.619.479-1.389.7-2.286.7h-.07c-.36.023-.817-.094-1.353-.327-.44-.199-.806-.502-1.112-.9-.339-.42-.597-.9-.747-1.412a4.468 4.468 0 01-.129-1.026c0-.117.047-.176.117-.176h.729c.07 0 .117.035.128.105.094.665.245 1.156.468 1.459.362.525.783.784 1.318.784.455 0 .876-.176 1.224-.525.35-.338.504-.783.504-1.342 0-.643-.2-1.13-.597-1.436-.385-.338-.886-.525-1.506-.55-.14 0-.187-.07-.187-.176z"></path>
               </svg>
               <div class="f4 mt-2">Golang</div>
             </div>
@@ -157,23 +187,208 @@
 <style scoped>
 .hero-section {
   padding: 4rem 0;
+  overflow: hidden;
+  position: relative;
 }
 
-.home-illustration {
-  max-width: 400px;
-  margin: 0 auto;
-  color: var(--color-accent-fg);
+/* Logo container styling */
+.logo-container {
+  position: relative;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 840px;
+  height: 840px;
+  z-index: 2;
+}
+
+/* Logo styling and animation */
+.edge-cloud-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(0, 195, 255, 0.4));
+  animation: pulse 3s ease-in-out infinite alternate;
+  transition: transform 0.3s ease;
+}
+
+/* Custom button styling */
+.btn-edge-cloud {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #0366d6;
+  color: white;
+  border: 1px solid #0366d6;
+}
+
+.btn-primary:hover {
+  background-color: #045cc1;
+  border-color: #045cc1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #0366d6;
+  border: 1px solid #0366d6;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(3, 102, 214, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Orbit elements */
+.orbit-element {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #0088ff, #00ddff);
+  filter: blur(2px);
+  z-index: 1;
+}
+
+.orbit-1 {
+  width: 15px;
+  height: 15px;
+  top: 20%;
+  left: 0;
+  animation: orbit1 12s linear infinite;
+}
+
+.orbit-2 {
+  width: 10px;
+  height: 10px;
+  bottom: 30%;
+  right: 10%;
+  animation: orbit2 8s linear infinite;
+}
+
+.orbit-3 {
+  width: 8px;
+  height: 8px;
+  top: 40%;
+  right: -5%;
+  animation: orbit3 15s linear infinite;
+}
+
+/* Circuit paths */
+.circuit-paths {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.circuit-path {
+  fill: none;
+  stroke: #0088ff;
+  stroke-width: 1;
+  stroke-dasharray: 10, 5;
+  stroke-linecap: round;
+  animation: dash 20s linear infinite;
+}
+
+/* Service grid layout - replaces the flex layout for better alignment */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card-wrapper {
+  width: 100%;
+}
+
+/* Service card hover effects */
+.service-card {
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .tech-item {
   transition: transform 0.2s ease;
 }
+
 .tech-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
 }
 
 h1, h2, h3 {
   color: var(--color-fg-default);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0, 195, 255, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.7));
+  }
+}
+
+@keyframes orbit1 {
+  from {
+    transform: rotate(0deg) translateX(120px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(120px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit2 {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit3 {
+  from {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(60px) rotate(-360deg);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
 }
 
 /* Responsive adjustments */
@@ -183,8 +398,22 @@ h1, h2, h3 {
   }
   
   h1.h000-mktg {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 1.2;
+  }
+  
+  .logo-container {
+    height: 300px;
+  }
+  
+  .logo-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .btn-edge-cloud {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 </style>

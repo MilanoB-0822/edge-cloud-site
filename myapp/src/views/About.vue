@@ -143,22 +143,22 @@
     <!-- Contact Form -->
     <div class="Box p-4 mb-6">
       <h2 class="h2-mktg mb-4">Get in Touch</h2>
-      <div class="d-md-flex">
+      <div class="d-md-flex flex-items-space-between">
         <div class="col-md-6 pr-md-4 mb-4 mb-md-0">
           <form class="contact-form">
-            <div class="form-group mb-3">
-              <label for="name" class="d-block mb-1">Name</label>
-              <input type="text" id="name" class="form-control width-full" placeholder="Your name">
+            <div class="form-group mb-4">
+              <label for="name" class="d-block mb-2">Name</label>
+              <input type="text" id="name" class="form-control width-full p-3" placeholder="Your name">
             </div>
-            <div class="form-group mb-3">
-              <label for="email" class="d-block mb-1">Email</label>
-              <input type="email" id="email" class="form-control width-full" placeholder="your.email@example.com">
+            <div class="form-group mb-4">
+              <label for="email" class="d-block mb-2">Email</label>
+              <input type="email" id="email" class="form-control width-full p-3" placeholder="your.email@example.com">
             </div>
-            <div class="form-group mb-3">
-              <label for="message" class="d-block mb-1">Message</label>
-              <textarea id="message" class="form-control width-full" rows="4" placeholder="How can we help you?"></textarea>
+            <div class="form-group mb-4">
+              <label for="message" class="d-block mb-2">Message</label>
+              <textarea id="message" class="form-control width-full p-3" rows="5" placeholder="How can we help you?"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary px-4 py-2">Send Message</button>
           </form>
         </div>
         <div class="col-md-6 pl-md-4">
@@ -167,15 +167,7 @@
             <p class="mb-4">
               Feel free to reach out to us with any questions, project inquiries, or partnership opportunities.
             </p>
-            <div class="mb-3 d-flex">
-              <svg class="octicon mr-2 color-fg-accent flex-shrink-0 mt-1" height="16" viewBox="0 0 16 16" version="1.1" width="16">
-                <path fill-rule="evenodd" d="M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3h-6.5a.25.25 0 01-.2-.1l-.9-1.2c-.33-.44-.85-.7-1.4-.7h-3.5z"></path>
-              </svg>
-              <div>
-                <strong>Address:</strong>
-                <p class="mb-0">123 Tech Street, Suite 200<br>San Francisco, CA 94107</p>
-              </div>
-            </div>
+            
             <div class="mb-3 d-flex">
               <svg class="octicon mr-2 color-fg-accent flex-shrink-0 mt-1" height="16" viewBox="0 0 16 16" version="1.1" width="16">
                 <path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path>
@@ -183,15 +175,6 @@
               <div>
                 <strong>Email:</strong>
                 <p class="mb-0">contact@opensourcesoftware.house</p>
-              </div>
-            </div>
-            <div class="mb-3 d-flex">
-              <svg class="octicon mr-2 color-fg-accent flex-shrink-0 mt-1" height="16" viewBox="0 0 16 16" version="1.1" width="16">
-                <path fill-rule="evenodd" d="M3.75 0A1.75 1.75 0 002 1.75v12.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 14.25V1.75A1.75 1.75 0 0012.25 0h-8.5zM3.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25V1.75zM8 13.25a.75.75 0 100-1.5.75.75 0 000 1.5zm-1.75-3a.75.75 0 01.75-.75h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75zm0-3a.75.75 0 01.75-.75h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75zm0-3a.75.75 0 01.75-.75h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75z"></path>
-              </svg>
-              <div>
-                <strong>Phone:</strong>
-                <p class="mb-0">+1 (555) 123-4567</p>
               </div>
             </div>
           </div>
