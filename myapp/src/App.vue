@@ -23,6 +23,9 @@
         <router-link to="/blog" class="Header-link">Blog</router-link>
       </div>
       <div class="Header-item">
+        <router-link to="/docs" class="Header-link">Docs</router-link>
+      </div>
+      <div class="Header-item">
         <router-link to="/about" class="Header-link">About</router-link>
       </div>
     </header>
