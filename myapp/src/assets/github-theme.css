@@ -63,6 +63,11 @@
   margin-right: var(--spacing-3);
 }
 
+.Header-item-secondary-text{
+  margin-left: var(--spacing-3);
+  padding-top: 0.75rem;
+}
+
 .Header-item--full {
   flex: auto;
 }
@@ -75,8 +80,19 @@
 }
 
 .Header-link:hover {
-  color: var(--color-accent-fg);
   text-decoration: none;
+}
+
+.Header-nav-items{
+  color: var(--color-fg-default);
+  padding: 0.5rem;
+  border: 2px solid var(--color-fg-muted);
+  border-radius: 1.1rem;
+}
+
+.Header-nav-items:hover {
+  color: var(--color-accent-fg);
+  border: 2px solid var(--color-accent-fg);
 }
 
 /* Box component */
