@@ -26,7 +26,7 @@
 /* Dark Mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-accent-fg: #58a6ff;
+    --color-accent-fg: #0AC3FF;
     --color-accent-emphasis: #1f6feb;
     --color-accent-subtle: rgba(56,139,253,0.15);
     --color-fg-default: #c9d1d9;
